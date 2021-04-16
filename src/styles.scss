@@ -36,6 +36,7 @@ body {
 .log-card {
   width: 100vw;
   height: 100vh;
+  background-color: #212121;
 }
 
 @media (min-width: 768px) {
@@ -53,4 +54,98 @@ body {
   margin: .4rem;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.btn {
+  &,
+  &:link,
+  &:visited {
+      font-size: 1.6rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      padding: 1.5rem 4rem;
+      display: inline-block;
+      border-radius: 10rem;
+  
+      transition: all .3s;
+  
+      position: relative;
+
+      border: none;
+      cursor: pointer;
+  }
+
+  &:hover {
+      transform: translateY(-.3rem);
+      box-shadow: 0 1rem 2rem rgba(#000, .2);
+
+      &::after {
+          transform: scaleX(1.4) scaleY(1.6);
+          opacity: 0;
+      }
+  }
+
+  &:active,
+  &:focus {
+      outline: none;
+      transform: translateY(-.1rem);
+      box-shadow: 0 .5rem 1rem rgba(#000, .2);
+  }
+
+
+  &--dark {
+      &:link,
+      &:visited {
+          background-color: #212121;
+          color: #FFF;
+      }
+
+      &:hover {
+          background-color: #212121;
+      }
+
+      &::after {
+          background-color: #212121;
+      }
+  }
+
+  &--silver {
+    &,
+    &:link,
+    &:visited {
+        background-color: #DDD;
+        color: #FFF;
+    }
+
+    &:hover {
+        background-color: #DDD;
+    }
+
+    &::after {
+        background-color: #DDD;
+    }
+}
+
+
+  &--animated {
+      animation-name: moveInBottom;
+      animation-duration: 1s;
+      animation-timing-function: ease-in-out;
+  }
+
+
+  &::after {
+      content: "";
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      border-radius: 10rem;
+  
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+  
+      transition: all .3s;
+  }
 }
