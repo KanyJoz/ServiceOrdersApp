@@ -8,9 +8,21 @@ export const ACTIONS: Action[] = [
         url: '/add'
     },
     {
-        text: 'List Orders',
+        text: 'List All Orders',
         icon: 'view_list',
-        value: 'list',
-        url: '/list'
+        value: 'list-all',
+        url: '/list-all'
+    },
+    {
+        text: 'List Completed Orders',
+        icon: 'done',
+        value: 'list-completed',
+        url: '/list-completed'
+    },
+    {
+        text: 'List Cancelled Orders',
+        icon: 'close',
+        value: 'list-cancelled',
+        url: '/list-cancelled'
     }
 ];

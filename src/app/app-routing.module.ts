@@ -20,7 +20,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/order/order-add/order-add.module').then(m => m.OrderAddModule),
   },
   {
-    path: 'list',
+    path: 'list-completed',
+    loadChildren: () => import('./pages/order/order-list/order-list.module').then(m => m.OrderListModule),
+  },
+  {
+    path: 'list-cancelled',
+    loadChildren: () => import('./pages/order/order-list/order-list.module').then(m => m.OrderListModule),
+  },
+  {
+    path: 'list-all',
     loadChildren: () => import('./pages/order/order-list/order-list.module').then(m => m.OrderListModule),
   },
   {
