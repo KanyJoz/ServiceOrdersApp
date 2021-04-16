@@ -1,1 +1,8 @@
-<p>order-card works!</p>
+<mat-card *ngIf="order" appOnHover>
+    <mat-card-header>
+      <mat-card-title>{{order.category}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{order.description}}</p>
+    </mat-card-content>
+  </mat-card>

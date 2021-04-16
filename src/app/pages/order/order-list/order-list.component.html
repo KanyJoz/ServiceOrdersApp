@@ -1,2 +1,15 @@
 <app-nav></app-nav>
-<p>order-list works!</p>
+<mat-toolbar color="foreground">
+    <mat-toolbar-row class="searchbar">
+        <span>{{ title }}</span>
+        <mat-form-field>
+            <input type="text" matInput [formControl]="searchControl"/>
+        </mat-form-field>
+        <button class="btn btn--silver" (click)="filteredSearch()">Search</button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<app-container classes="container-1 flex">
+    <app-order-card class="item" *ngFor="let item of list" [order]="item"></app-order-card>
+    <br />
+</app-container>
