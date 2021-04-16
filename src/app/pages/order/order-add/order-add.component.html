@@ -1,2 +1,95 @@
 <app-nav></app-nav>
-<p>order-add works!</p>
+<div class="centering">
+    <mat-card class="reg-card">
+      <form [formGroup]="form" (ngSubmit)="create()">
+        <h2>Order Creation</h2>
+
+        <mat-form-field class="max__width">
+          <mat-label>Category</mat-label>
+          <input matInput type="text" name="category" placeholder="Eletronics" formControlName="category">
+        </mat-form-field>
+
+        <mat-form-field class="max__width">
+          <mat-label>Short Description</mat-label>
+          <input matInput type="text" name="description" placeholder="These goods need power" formControlName="description">
+        </mat-form-field>
+
+        <mat-form-field class="max__width">
+          <mat-label>E-mail of Contact Person</mat-label>
+          <input type="email" name="email" matInput placeholder="johndoe87@gmail.com" formControlName="email">
+          <mat-hint>Must contain @</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="max__width">
+          <mat-label>State of Order</mat-label>
+          <mat-select name="state" formControlName="state">
+            <mat-option *ngFor="let state of states" [value]="state">
+              {{state}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="max__width">
+          <mat-label>Priority</mat-label>
+          <mat-select name="priority" formControlName="priority">
+            <mat-option *ngFor="let priority of priorities" [value]="priority">
+              {{priority}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="max__width">
+          <mat-label>Items</mat-label>
+          <mat-chip-list #chipList>
+            <mat-chip *ngFor="let item of items" [selectable]="selectable"
+                    [removable]="removable" (removed)="removeItem(item)">
+              {{item}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="List items..."
+                  [matChipInputFor]="chipList"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  [matChipInputAddOnBlur]="addOnBlur"
+                  (matChipInputTokenEnd)="addItem($event)">
+          </mat-chip-list>
+        </mat-form-field>
+
+        <mat-form-field class="max__width">
+          <mat-label>Parties</mat-label>
+          <mat-chip-list #chipList2>
+            <mat-chip *ngFor="let party of parties" [selectable]="selectable2"
+                    [removable]="removable2" (removed)="removeParty(party)">
+              {{party}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="List parties..."
+                  [matChipInputFor]="chipList2"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  [matChipInputAddOnBlur]="addOnBlur2"
+                  (matChipInputTokenEnd)="addParty($event)">
+          </mat-chip-list>
+        </mat-form-field>
+
+        <mat-form-field class="max__width">
+          <mat-label>Notes</mat-label>
+          <mat-chip-list #chipList3 formControlName="notes">
+            <mat-chip *ngFor="let note of notes" [selectable]="selectable3"
+                    [removable]="removable3" (removed)="removeNote(note)">
+              {{note}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="List notes..."
+                  [matChipInputFor]="chipList3"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  [matChipInputAddOnBlur]="addOnBlur3"
+                  (matChipInputTokenEnd)="addNote($event)">
+          </mat-chip-list>
+        </mat-form-field>
+
+
+        <div class="btn-container">
+            <button type="submit" [ngClass]="form.invalid ? getCurrentClasses(true) : getCurrentClasses(false)" [disabled]="form.invalid">Create Order</button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
