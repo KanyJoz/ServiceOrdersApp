@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { getRegForm } from 'src/app/shared/forms/reg.from';
 
 @Component({
   selector: 'app-reg',
@@ -8,17 +9,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./reg.component.scss']
 })
 export class RegComponent {
-  form: FormGroup = new FormGroup({
-    username: new FormControl('', [Validators.minLength(8),
-      Validators.required, Validators.pattern('^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$')]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.minLength(6), Validators.required]),
-    passwordAgain: new FormControl('', [Validators.minLength(6), Validators.required]),
-  });
-
   error = false;
 
+  form: FormGroup = getRegForm();
+
   constructor(private router: Router) { }
+
+  getCurrentClasses(flag: boolean): object {
+    if (flag) {
+      const currenctClasses = {
+        btn__disabled: true,
+        btn: false,
+        btn__silver: false,
+        max__width: true
+      };
+      return currenctClasses;
+    } else {
+      const currenctClasses = {
+        btn__disabled: false,
+        btn: true,
+        btn__silver: true,
+        max__width: true
+      };
+      return currenctClasses;
+    }
+  }
 
   // TODO: firebase Auth
   registration(): void {

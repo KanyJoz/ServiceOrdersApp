@@ -2,34 +2,34 @@
     <mat-card class="reg-card">
       <form [formGroup]="form" (ngSubmit)="registration()">
         <h2>Registration</h2>
-        <mat-form-field class="max-width">
+        <mat-form-field class="max__width">
           <mat-label>Username</mat-label>
           <input matInput type="text" name="username" placeholder="John Doe" formControlName="username">
           <mat-hint>Must be at least 8 characters long</mat-hint>
         </mat-form-field>
-        <mat-form-field class="max-width">
+        <mat-form-field class="max__width">
           <mat-label>E-mail</mat-label>
           <input type="email" name="email" matInput placeholder="johndoe87@gmail.com" formControlName="email">
           <mat-hint>Must contain @</mat-hint>
         </mat-form-field>
-        <mat-form-field class="max-width">
+        <mat-form-field class="max__width">
           <mat-label>Password</mat-label>
           <input type="password" name="password" matInput placeholder="12345" formControlName="password">
           <mat-hint align="end">min. length 6 / {{form.value.password.length}}</mat-hint>
         </mat-form-field>
-        <mat-form-field class="max-width">
+        <mat-form-field class="max__width">
           <mat-label>Password Again</mat-label>
           <input type="password" name="passwordAgain" matInput placeholder="12345" formControlName="passwordAgain">
           <mat-hint align="end">min. length 6 / {{form.value.passwordAgain.length}}</mat-hint>
         </mat-form-field>
         <mat-chip-list *ngIf="error">
-          <mat-chip color="warn" class="max-width" style="margin-top: 16px;" selected>
+          <mat-chip color="warn" class="max__width" style="margin-top: 16px;" selected>
             The password must be equal!
           </mat-chip>
         </mat-chip-list>
         <div class="btn-container">
-            <button class="max-width btn btn--silver" [routerLink]="[ '/login' ]">Back To Login</button>
-            <button type="submit" class="max-width btn btn--silver" [disabled]="form.invalid">Registration</button>
+            <button class="max__width btn btn--silver" [routerLink]="[ '/login' ]">Back To Login</button>
+            <button type="submit" [ngClass]="form.invalid ? getCurrentClasses(true) : getCurrentClasses(false)" [disabled]="form.invalid">Registration</button>
         </div>
       </form>
     </mat-card>

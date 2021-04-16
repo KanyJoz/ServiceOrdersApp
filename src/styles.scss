@@ -21,7 +21,7 @@ body {
   font-family: "Lato", sans-serif;
 }
 
-.max-width {
+.max__width {
   width: 100%;
 }
 
@@ -75,6 +75,23 @@ body {
       cursor: pointer;
   }
 
+  &__disabled,
+  &__disabled:link,
+  &__disabled:visited {
+      font-size: 1.6rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      padding: 1.5rem 4rem;
+      display: inline-block;
+      border-radius: 10rem;
+  
+      transition: all .3s;
+  
+      position: relative;
+
+      border: none;
+  }
+
   &:hover {
       transform: translateY(-.3rem);
       box-shadow: 0 1rem 2rem rgba(#000, .2);
@@ -93,7 +110,7 @@ body {
   }
 
 
-  &--dark {
+  &__dark {
       &:link,
       &:visited {
           background-color: #212121;
@@ -109,12 +126,12 @@ body {
       }
   }
 
-  &--silver {
+  &__silver {
     &,
     &:link,
     &:visited {
         background-color: #DDD;
-        color: #FFF;
+        color: #212121;
     }
 
     &:hover {
@@ -127,7 +144,7 @@ body {
 }
 
 
-  &--animated {
+  &__animated {
       animation-name: moveInBottom;
       animation-duration: 1s;
       animation-timing-function: ease-in-out;
