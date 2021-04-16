@@ -16,6 +16,18 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule),
   },
   {
+    path: 'add',
+    loadChildren: () => import('./pages/order/order-add/order-add.module').then(m => m.OrderAddModule),
+  },
+  {
+    path: 'list',
+    loadChildren: () => import('./pages/order/order-list/order-list.module').then(m => m.OrderListModule),
+  },
+  {
+    path: 'update',
+    loadChildren: () => import('./pages/order/order-update/order-update.module').then(m => m.OrderUpdateModule),
+  },
+  {
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full'

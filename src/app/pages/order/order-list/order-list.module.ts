@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrderListComponent } from './order-list.component';
+import { OrderListRoutingModule } from './order-list-routing.module';
+import { NavModule } from '../../nav/nav.module';
 
 
 
@@ -9,7 +11,9 @@ import { OrderListComponent } from './order-list.component';
     OrderListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    OrderListRoutingModule,
+    NavModule
   ],
   exports: [
     OrderListComponent

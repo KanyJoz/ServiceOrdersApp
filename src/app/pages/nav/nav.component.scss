@@ -1,0 +1,20 @@
+.sub-btn:not(:last-child) {
+    margin-right: 1.6rem;
+}
+
+.main-btn {
+    font-size: xx-large;
+    margin-right: 1.6rem;
+}
+
+.active {
+    border-bottom: white 1px solid;
+    border-radius: 0;
+}
+
+mat-toolbar {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1000;
+}

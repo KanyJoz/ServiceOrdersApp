@@ -1,1 +1,28 @@
-<p>nav works!</p>
+<mat-toolbar color="foreground">
+    <mat-toolbar-row>
+        <a class="main-btn" mat-button [routerLink]="[ '/home' ]" routerLinkActive="active">Admin Panel</a>
+
+        <button class="sub-btn" mat-button *ngFor="let action of actions" [routerLink]="[ action.url ]" routerLinkActive="active">
+        {{action.text}}&nbsp;
+            <mat-icon>{{action.icon}}</mat-icon>
+        </button>
+
+        <span style="flex: 1 1;"></span>
+
+        <!-- TODO: user name dinamically -->
+        <button mat-button [matMenuTriggerFor]="menu">Temp User&nbsp;
+            <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+
+        <mat-menu #menu="matMenu">
+        <button mat-menu-item disabled>
+            <mat-icon>settings</mat-icon>
+            <span>Change Password</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+        </button>
+        </mat-menu>
+    </mat-toolbar-row>
+</mat-toolbar>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrderUpdateComponent } from './order-update.component';
+import { OrderUpdateRoutingModule } from './order-update-routing.module';
 
 
 
@@ -9,7 +10,8 @@ import { OrderUpdateComponent } from './order-update.component';
     OrderUpdateComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    OrderUpdateRoutingModule
   ],
   exports: [
     OrderUpdateComponent
