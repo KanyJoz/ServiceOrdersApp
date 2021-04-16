@@ -36,6 +36,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/order/order-update/order-update.module').then(m => m.OrderUpdateModule),
   },
   {
+    path: 'change',
+    loadChildren: () => import('./pages/change/change.module').then(m => m.ChangeModule),
+  },
+  {
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full'

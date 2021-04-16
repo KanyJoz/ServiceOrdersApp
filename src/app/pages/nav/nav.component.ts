@@ -17,5 +17,9 @@ export class NavComponent implements OnInit {
     this.router.navigateByUrl('login');
   }
 
+  changePwd(): void {
+    this.router.navigateByUrl('change');
+  }
+
   ngOnInit(): void { }
 }

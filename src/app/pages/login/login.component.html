@@ -2,7 +2,7 @@
     <mat-card class="reg-card">
       <form [formGroup]="form" (ngSubmit)="login()">
         <h2>Login</h2>
-
+        
         <mat-form-field class="max__width">
           <mat-label>E-mail</mat-label>
           <input type="email" name="email" matInput placeholder="johndoe87@gmail.com" formControlName="email">
@@ -16,7 +16,7 @@
         </mat-form-field>
 
         <div class="btn-container">
-            <button class="max__width btn btn--silver" [routerLink]="[ '/reg' ]">Go To Registration</button>
+            <button class="max__width btn btn--silver" [routerLink]="[ '/reg' ]">Go Register</button>
             <button type="submit" [ngClass]="form.invalid ? getCurrentClasses(true) : getCurrentClasses(false)" [disabled]="form.invalid">Login</button>
         </div>
       </form>
