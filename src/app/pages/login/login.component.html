@@ -1,1 +1,24 @@
-<h1>Ide jön majd a login form</h1>
+<div class="centering">
+    <mat-card class="reg-card">
+      <form [formGroup]="form" (ngSubmit)="login()">
+        <h2>Login</h2>
+
+        <mat-form-field class="max__width">
+          <mat-label>E-mail</mat-label>
+          <input type="email" name="email" matInput placeholder="johndoe87@gmail.com" formControlName="email">
+          <mat-hint>Must contain @</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="max__width">
+          <mat-label>Password</mat-label>
+          <input type="password" name="password" matInput placeholder="12345" formControlName="password">
+          <mat-hint align="end">min. length 6 / {{form.value.password.length}}</mat-hint>
+        </mat-form-field>
+
+        <div class="btn-container">
+            <button class="max__width btn btn--silver" [routerLink]="[ '/reg' ]">Go To Registration</button>
+            <button type="submit" [ngClass]="form.invalid ? getCurrentClasses(true) : getCurrentClasses(false)" [disabled]="form.invalid">Login</button>
+        </div>
+      </form>
+    </mat-card>
+  </div>

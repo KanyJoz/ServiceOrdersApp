@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { getRegForm } from 'src/app/shared/forms/reg.from';
+import { getRegForm } from 'src/app/shared/forms/reg.form';
 
 @Component({
   selector: 'app-reg',
@@ -41,7 +41,7 @@ export class RegComponent {
     if (this.form.valid) {
       if (this.form.value.password === this.form.value.passwordAgain) {
         console.log(this.form.value);
-        // this.router.navigateByUrl('/login');
+        // this.router.navigateByUrl('/home');
         return;
       }
     }
