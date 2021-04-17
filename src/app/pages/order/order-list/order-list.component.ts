@@ -11,17 +11,13 @@ import { Order } from 'src/app/shared/models/order.model';
   styleUrls: ['./order-list.component.scss']
 })
 export class OrderListComponent implements OnInit {
-  title = '';
   list: Order[] = ORDERS;
   filteredList: Order[] = ORDERS_FILTERED;
   searchControl = new FormControl();
 
-  constructor(/*rivate service: FbBaseService<Game>*/ private router: Router) { }
+  constructor(/*private service: FbBaseService<Game>*/ private router: Router) { }
 
   ngOnInit(): void {
-    if (this.router.url === '/list-all') { this.title = 'Search All Orders'; }
-    else if (this.router.url === '/list-completed') { this.title = 'Search Completed Orders'; }
-    else if (this.router.url === '/list-cancelled') { this.title = 'Search Cancelled Orders'; }
     // this.get();
     /* this.filteredOptions = this.myControl.valueChanges
       .pipe(

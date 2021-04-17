@@ -1,3 +1,4 @@
+/* Global Config */
 *,
 *::after,
 *::before {
@@ -21,6 +22,11 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+h2 {
+  text-align: center;
+}
+
+/* Utility classes */
 .max__width {
   width: 100%;
 }
@@ -32,6 +38,7 @@ body {
   height: stretch;
 }
 
+/* Global Component classes */
 .reg-card,
 .log-card {
   width: 100vw;
@@ -54,6 +61,14 @@ body {
   margin: .4rem;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.btn-container {
+  margin-top: 2rem;
+
+  button {
+      margin-top: 2rem;
+  }
 }
 
 .btn {
@@ -165,4 +180,52 @@ body {
   
       transition: all .3s;
   }
+}
+
+@media screen and (max-width: 768px) {
+  .btn {
+    &,
+    &:link,
+    &:visited {
+        font-size: 1.6rem;
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        border-radius: 10rem;
+    
+        
+    
+        position: relative;
+  
+        border: none;
+        cursor: pointer;
+    }
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+  
+      &::after {
+          transform: none;
+          opacity: 0;
+      }
+    }
+  }
+}
+
+/* google webkit bugfix */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fff !important;
+  -webkit-box-shadow: 0 0 0px 1000px #212121 inset !important;
+  transition: background-color 5000s ease-in-out 0s !important;
 }

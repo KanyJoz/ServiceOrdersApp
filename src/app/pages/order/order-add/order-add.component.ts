@@ -52,16 +52,16 @@ export class OrderAddComponent {
   parties: string[] = [];
   notes: string[] = [];
 
+  constructor(private router: Router) { }
+
   addItem(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
 
-    // Add our fruit
     if ((value || '').trim()) {
       this.items.push(value.trim());
     }
 
-    // Reset the input value
     if (input) {
       input.value = '';
     }
@@ -79,12 +79,10 @@ export class OrderAddComponent {
     const input = event.input;
     const value = event.value;
 
-    // Add our fruit
     if ((value || '').trim()) {
       this.parties.push(value.trim());
     }
 
-    // Reset the input value
     if (input) {
       input.value = '';
     }
@@ -102,12 +100,10 @@ export class OrderAddComponent {
     const input = event.input;
     const value = event.value;
 
-    // Add our fruit
     if ((value || '').trim()) {
       this.notes.push(value.trim());
     }
 
-    // Reset the input value
     if (input) {
       input.value = '';
     }
@@ -120,8 +116,6 @@ export class OrderAddComponent {
       this.notes.splice(index, 1);
     }
   }
-
-  constructor(private router: Router) { }
 
   getCurrentClasses(flag: boolean): object {
     if (flag) {

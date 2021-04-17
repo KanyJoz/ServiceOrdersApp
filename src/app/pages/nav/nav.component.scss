@@ -35,15 +35,10 @@ mat-toolbar {
     z-index: 1000;
 }
 
-.menu {
-
-}
-
 @media screen and (max-width: 1200px) {
     .row {
         display: flex;
         flex-direction: column;
-
     }
     
     .row div {

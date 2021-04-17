@@ -10,7 +10,6 @@ import { getRegForm } from 'src/app/shared/forms/reg.form';
 })
 export class RegComponent {
   error = false;
-
   form: FormGroup = getRegForm();
 
   constructor(private router: Router) { }

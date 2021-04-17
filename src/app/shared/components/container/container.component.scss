@@ -3,6 +3,19 @@
   margin-right: auto;
 }
 
+.main-container.no-padding {
+  padding: 0;
+}
+
+.main-container.no-padding-top {
+  padding-top: 0;
+}
+
+.main-container.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 @media (min-width: 768px) {
   .main-container {
     padding-right: 15px;
@@ -23,15 +36,3 @@
   }
 }
 
-.main-container.no-padding {
-  padding: 0;
-}
-
-.main-container.no-padding-top {
-  padding-top: 0;
-}
-
-.main-container.flex {
-  display: flex;
-  flex-wrap: wrap;
-}

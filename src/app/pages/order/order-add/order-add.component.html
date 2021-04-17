@@ -72,7 +72,7 @@
 
         <mat-form-field class="max__width">
           <mat-label>Notes</mat-label>
-          <mat-chip-list #chipList3 formControlName="notes">
+          <mat-chip-list #chipList3>
             <mat-chip *ngFor="let note of notes" [selectable]="selectable3"
                     [removable]="removable3" (removed)="removeNote(note)">
               {{note}}

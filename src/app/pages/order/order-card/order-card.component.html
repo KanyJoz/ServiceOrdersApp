@@ -1,8 +1,25 @@
 <mat-card *ngIf="order" appOnHover>
-    <mat-card-header>
-      <mat-card-title>{{order.category}}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>{{order.description}}</p>
-    </mat-card-content>
-  </mat-card>
+  <mat-card-header class="mat-header">
+    <mat-card-title>{{order.category}}</mat-card-title>
+    <div>
+      <mat-card-subtitle>{{order.description}}</mat-card-subtitle>
+      <mat-card-subtitle>{{order.contact}}</mat-card-subtitle>
+      <mat-card-subtitle>{{order.state}}</mat-card-subtitle>
+      <mat-card-subtitle>{{order.priority}}</mat-card-subtitle>
+    </div>
+  </mat-card-header>
+  <mat-card-content class="mat-content">
+    <p>Items: {{order.items}}</p>
+    <p>Parties: {{order.parties}}</p>
+    <p>Notes: {{order.notes}}</p>
+  </mat-card-content>
+  <mat-card-content class="mat-content mat-content--right">
+    <mat-card-subtitle class="mat-sub">Ordered: {{order.orderDate}}</mat-card-subtitle>
+    <mat-card-subtitle class="mat-sub">Expected: {{order.expectedDate}}</mat-card-subtitle>
+  </mat-card-content>
+  <mat-card-actions class="mat-buttons">
+    <button mat-button>Update</button>
+    <button mat-button>Cancel</button>
+    <button mat-button>Delete</button>
+  </mat-card-actions>
+</mat-card>
