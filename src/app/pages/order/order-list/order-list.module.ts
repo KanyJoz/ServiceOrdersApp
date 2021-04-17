@@ -11,6 +11,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { OrderCancelModule } from '../order-cancel/order-cancel.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -25,12 +27,14 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatToolbarModule,
     ContainerModule,
     OrderCardModule,
+    OrderCancelModule,
     MatButtonModule,
     MatIconModule,
     MatAutocompleteModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   exports: [
     OrderListComponent

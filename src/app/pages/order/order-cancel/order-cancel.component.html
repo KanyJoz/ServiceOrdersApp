@@ -1,0 +1,18 @@
+<div class="centering">
+    <mat-card class="reg-card">
+      <form [formGroup]="form">
+        <h2>Cancel Order</h2>
+        
+        <mat-form-field class="max__width">
+            <mat-label>Cancellation Reason</mat-label>
+            <input matInput type="text" name="reason" placeholder="Because it broke" formControlName="reason">
+          </mat-form-field>
+
+        <div class="btn-container">
+            <button class="max__width btn btn--silver" (click)="dialogRef.close()">Back</button>
+            <button type="submit" [mat-dialog-close]="form.value" [ngClass]="form.invalid ? getCurrentClasses(true) : getCurrentClasses(false)" [disabled]="form.invalid">Cancel Order</button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+  

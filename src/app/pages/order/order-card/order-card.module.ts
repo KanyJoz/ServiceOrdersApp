@@ -5,6 +5,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { OnHoverModule } from 'src/app/shared/directives/on-hover/on-hover.module';
+import { OrderCancelModule } from '../order-cancel/order-cancel.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -17,7 +19,10 @@ import { OnHoverModule } from 'src/app/shared/directives/on-hover/on-hover.modul
     MatCardModule,
     MatIconModule,
     MatButtonModule,
-    OnHoverModule
+    OnHoverModule,
+    OrderCancelModule,
+    MatButtonModule,
+    MatDialogModule
   ],
   exports: [
     OrderCardComponent
