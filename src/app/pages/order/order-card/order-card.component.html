@@ -18,7 +18,7 @@
     <mat-card-subtitle class="mat-sub">Expected: {{order.expectedDate}}</mat-card-subtitle>
   </mat-card-content>
   <mat-card-actions class="mat-buttons">
-    <button mat-button>Update</button>
+    <button mat-button (click)="updateOrder()">Update</button>
     <button mat-button (click)="openDialog()">Cancel</button>
     <button mat-button>Delete</button>
   </mat-card-actions>

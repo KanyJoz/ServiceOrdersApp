@@ -4,13 +4,14 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { Router } from '@angular/router';
 import { getCreateForm } from 'src/app/shared/forms/create.form';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-order-add',
   templateUrl: './order-add.component.html',
   styleUrls: ['./order-add.component.scss']
 })
-export class OrderAddComponent {
+export class OrderAddComponent implements OnInit {
   form: FormGroup = getCreateForm();
   states: string[] = [
     'Acknowledged',
@@ -52,7 +53,11 @@ export class OrderAddComponent {
   parties: string[] = [];
   notes: string[] = [];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private location: Location) { }
+
+  ngOnInit(): void {
+    console.log(this.location.getState());
+  }
 
   addItem(event: MatChipInputEvent): void {
     const input = event.input;
