@@ -149,7 +149,20 @@ export class OrderAddComponent implements OnInit {
       order.items = this.items;
       order.parties = this.parties;
       order.notes = this.notes;
+
+      const orderDate = new Date(Date.now());
+      order.orderDate = orderDate.toLocaleDateString();
+      let days = 7;
+      if (order.priority === 'Medium Priority') {
+        days = 14;
+      } else if (order.priority === 'Low Priority') {
+        days = 21;
+      }
+      orderDate.setDate(orderDate.getDate() + days);
+      order.expectedDate = orderDate.toLocaleDateString();
+
       console.log(order);
+
       // this.router.navigateByUrl('/home');
       return;
     }

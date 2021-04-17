@@ -19,12 +19,17 @@ export class OrderCardComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(OrderCancelComponent, {});
     // tslint:disable-next-line: deprecation
-    dialogRef.afterClosed().subscribe((order: Order) => {
-      console.log(order);
-      // TODO: cancelDate
-      // if (game?.title) {
-        //this.service.add('games', game);
-      // }
+    dialogRef.afterClosed().subscribe((res: any) => {
+      console.log(res);
+      if(res) {
+        this.order.cancellationReason = res.reason;
+        const date = new Date(Date.now());
+        this.order.cancellationDate = date.toLocaleDateString();
+        // TODO: cancelDate
+        // if (game?.title) {
+          //this.service.add('games', game);
+        // }
+      }
     }, err => {
       console.warn(err);
     });
