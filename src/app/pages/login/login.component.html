@@ -17,6 +17,7 @@
 
         <div class="btn-container">
             <button class="max__width btn btn--silver" [routerLink]="[ '/reg' ]">Go Register</button>
+            <button class="max__width btn btn--silver" [routerLink]="[ '/change' ]">Forgot Password</button>
             <button type="submit" [ngClass]="form.invalid ? getCurrentClasses(true) : getCurrentClasses(false)" [disabled]="form.invalid">Login</button>
         </div>
       </form>

@@ -18,9 +18,5 @@ export class NavComponent implements OnInit {
     this.fbAuth.SignOut();
   }
 
-  changePwd(): void {
-    this.router.navigateByUrl('change');
-  }
-
   ngOnInit(): void { }
 }

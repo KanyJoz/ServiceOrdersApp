@@ -7,8 +7,7 @@ const routes: Routes = [
     {
         path: '',
         component: ChangeComponent,
-        data: { title: 'ServiceOrdersApp - Change Password' },
-        canActivate: [FBAuthGuardService]
+        data: { title: 'ServiceOrdersApp - Change Password' }
     }
 ];
 
