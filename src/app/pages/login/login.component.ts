@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FbAuthService } from 'src/app/services/auth/fb-auth.service';
 import { getLoginForm } from 'src/app/shared/forms/login.form';
 
 @Component({
@@ -11,7 +12,7 @@ import { getLoginForm } from 'src/app/shared/forms/login.form';
 export class LoginComponent {
   form: FormGroup = getLoginForm();
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private fbAuth: FbAuthService) { }
 
   getCurrentClasses(flag: boolean): object {
     if (flag) {
@@ -36,7 +37,8 @@ export class LoginComponent {
     // TODO: firebase Auth
     login(): void {
       if (this.form.valid) {
-          console.log(this.form.value);
+          // console.log(this.form.value);
+          this.fbAuth.SignIn(this.form.value.email, this.form.value.password);
           // this.router.navigateByUrl('/home');
           return;
       }

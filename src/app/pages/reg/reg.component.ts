@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FbAuthService } from 'src/app/services/auth/fb-auth.service';
 import { getRegForm } from 'src/app/shared/forms/reg.form';
 
 @Component({
@@ -12,7 +13,7 @@ export class RegComponent {
   error = false;
   form: FormGroup = getRegForm();
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private fbAuth: FbAuthService) { }
 
   getCurrentClasses(flag: boolean): object {
     if (flag) {
@@ -39,8 +40,9 @@ export class RegComponent {
     this.error = false;
     if (this.form.valid) {
       if (this.form.value.password === this.form.value.passwordAgain) {
-        console.log(this.form.value);
-        // this.router.navigateByUrl('/home');
+        this.fbAuth.SignUp(this.form.value.email, this.form.value.password);
+        this.router.navigateByUrl('home');
+        // console.log(this.form.value);
         return;
       }
     }

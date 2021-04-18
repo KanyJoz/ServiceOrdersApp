@@ -61,6 +61,7 @@ export class OrderAddComponent implements OnInit {
   ngOnInit(): void {
     if (history.state?.id) {
       console.log(history.state);
+      
       this.actualOrder = {};
       this.actualOrder.id = history.state.id;
       this.actualOrder.category = history.state.category;
