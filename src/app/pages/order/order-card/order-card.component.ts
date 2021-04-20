@@ -38,4 +38,8 @@ export class OrderCardComponent implements OnInit {
   updateOrder(): void {
     this.router.navigateByUrl('add', { state: this.order});
   }
+
+  deleteOrder(): void {
+    this.fbStore.delete('orders', this.order.id);
+  }
 }
