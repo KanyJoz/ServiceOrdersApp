@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ORDERS_FILTERED } from 'src/app/shared/database/order-filtered.database';
-import { ORDERS } from 'src/app/shared/database/order.database';
+import { Observable } from 'rxjs';
+import { FbStoreService } from 'src/app/services/store/fb-store.service';
 import { Order } from 'src/app/shared/models/order.model';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-order-list',
@@ -11,33 +12,27 @@ import { Order } from 'src/app/shared/models/order.model';
   styleUrls: ['./order-list.component.scss']
 })
 export class OrderListComponent implements OnInit {
-  list: Order[] = ORDERS;
-  filteredList: Order[] = ORDERS_FILTERED;
+  list: Observable<Order[]>;
+  filteredList: Observable<Order[]>;
   searchControl = new FormControl();
 
-  constructor(/*private service: FbBaseService<Game>*/ private router: Router) { }
+  constructor(private router: Router, private fbStore: FbStoreService, private location: Location) { }
 
   ngOnInit(): void {
-    // this.get();
-    /* this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        debounceTime(300),
-        map(value => this._filter(value))
-      ); */
-    }
+    this.get();
+  }
 
   get(): void {
-    // this.list = this.service.get('games');
+    if (this.location.path() === '/list-all'){
+      this.list = this.fbStore.getAll('orders');
+    } else if (this.location.path() === '/list-completed') {
+      this.list = this.fbStore.getCompleted('orders');
+    } else if (this.location.path() === '/list-cancelled'){
+      this.list = this.fbStore.getCancelled('orders');
+    }
   }
 
   filteredSearch(): void {
-    // console.log(this.searchControl.value);
-    this.list = this.filteredList;
+    console.log(this.location.path());
   }
-
-  // private _filter(value: string): string[] {
-    // const filterValue = value.toLowerCase();
-    // return this.options.filter(option => option.toLowerCase().includes(filterValue));
-  // }
 }

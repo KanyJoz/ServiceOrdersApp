@@ -6,7 +6,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { Router } from '@angular/router';
 import { getCreateForm } from 'src/app/shared/forms/create.form';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-order-add',
@@ -57,7 +57,7 @@ export class OrderAddComponent implements OnInit {
 
   actualOrder: any = null;
 
-  constructor(private router: Router, private location: Location, private fbStore: FbStoreService) { }
+  constructor(private router: Router, private fbStore: FbStoreService) { }
 
   ngOnInit(): void {
     if (history.state?.id) {
