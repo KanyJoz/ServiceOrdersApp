@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Order } from 'src/app/shared/models/order.model';
 import { OrderCancelComponent } from '../order-cancel/order-cancel.component';
@@ -12,12 +12,14 @@ import { FbStoreService } from 'src/app/services/store/fb-store.service';
 })
 export class OrderCardComponent implements OnInit {
   @Input() order?: Order;
+  @Output() putOrder = new EventEmitter<Order>();
 
   constructor(private dialog: MatDialog, private router: Router, private fbStore: FbStoreService) { }
 
   ngOnInit(): void { }
 
-  openDialog(): void {
+  openDialog(event): void {
+    event.stopPropagation();
     const dialogRef = this.dialog.open(OrderCancelComponent, {});
 
     // tslint:disable-next-line: deprecation

@@ -9,6 +9,6 @@
 </mat-toolbar>
 
 <app-container classes="main-container flex">
-    <app-order-card class="item" *ngFor="let item of list | async" [order]="item"></app-order-card>
+    <app-order-card class="item" *ngFor="let item of list | async" [order]="item" (putOrder)="onPutOrder($event)"></app-order-card>
     <br />
 </app-container>

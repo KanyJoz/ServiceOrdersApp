@@ -45,4 +45,8 @@ export class OrderListComponent implements OnInit {
       this.get();
     }
   }
+
+  onPutOrder(event: Order): void {
+    this.searchControl.setValue(event.category);
+  }
 }
