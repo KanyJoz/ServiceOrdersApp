@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FbBaseService } from './fb-base.service';
+import { FbStoreService } from './fb-store.service';
 
-describe('FbBaseService', () => {
-  let service: FbBaseService;
+describe('FbStoreService', () => {
+  let service: FbStoreService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FbBaseService);
+    service = TestBed.inject(FbStoreService);
   });
 
   it('should be created', () => {

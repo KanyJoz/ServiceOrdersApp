@@ -1,3 +1,4 @@
+import { FbStoreService } from './../../../services/store/fb-store.service';
 import { Order } from './../../../shared/models/order.model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
@@ -56,12 +57,11 @@ export class OrderAddComponent implements OnInit {
 
   actualOrder: any = null;
 
-  constructor(private router: Router, private location: Location) { }
+  constructor(private router: Router, private location: Location, private fbStore: FbStoreService) { }
 
   ngOnInit(): void {
     if (history.state?.id) {
-      console.log(history.state);
-      
+
       this.actualOrder = {};
       this.actualOrder.id = history.state.id;
       this.actualOrder.category = history.state.category;
@@ -87,7 +87,6 @@ export class OrderAddComponent implements OnInit {
       this.form.get('state').setValue(this.actualOrder.state);
       this.form.get('priority').setValue(this.actualOrder.priority);
 
-      console.log(this.actualOrder);
     } else {
       console.log('No id');
     }
@@ -180,43 +179,57 @@ export class OrderAddComponent implements OnInit {
   create(): void {
     if (this.form.valid) {
       if (!this.actualOrder) {
-        const order = this.form.value;
-        order.id = 'NEW';
-
-        order.items = this.items;
-        order.parties = this.parties;
-        order.notes = this.notes;
-
         const orderDate = new Date(Date.now());
-        order.orderDate = orderDate.toLocaleDateString();
+        const orderD = orderDate.toLocaleDateString();
+
         let days = 7;
-        if (order.priority === 'Medium Priority') {
+        if (this.form.value.priority === 'Medium Priority') {
           days = 14;
-        } else if (order.priority === 'Low Priority') {
+        } else if (this.form.value.priority === 'Low Priority') {
           days = 21;
         }
+
         orderDate.setDate(orderDate.getDate() + days);
-        order.expectedDate = orderDate.toLocaleDateString();
+        const expectedD = orderDate.toLocaleDateString();
 
-        order.cancellationDate = '';
-        order.cancellationReason = '';
+        const order: Order = {
+          id: null,
+          category: this.form.value.category,
+          description: this.form.value.description,
+          contact: this.form.value.email,
+          state: this.form.value.state,
+          priority: this.form.value.priority,
+          items: this.items,
+          parties: this.parties,
+          notes: this.notes,
+          orderDate: orderD,
+          expectedDate: expectedD,
+          cancellationDate: '',
+          cancellationReason: ''
+        };
 
-        console.log(order);
+        this.fbStore.add('orders', order, order.id);
+        this.router.navigateByUrl('list-all');
       } else {
-        const order = this.form.value;
-        order.id = this.actualOrder.id;
 
-        order.items = this.items;
-        order.parties = this.parties;
-        order.notes = this.notes;
+        const order: Order = {
+          id: this.actualOrder.id,
+          category: this.form.value.category,
+          description: this.form.value.description,
+          contact: this.form.value.email,
+          state: this.form.value.state,
+          priority: this.form.value.priority,
+          items: this.items,
+          parties: this.parties,
+          notes: this.notes,
+          orderDate: this.actualOrder.orderDate,
+          expectedDate: this.actualOrder.expectedDate,
+          cancellationDate: this.actualOrder.cancellationDate,
+          cancellationReason: this.actualOrder.cancellationReason
+        };
 
-        order.orderDate = this.actualOrder.orderDate;
-        order.expectedDate = this.actualOrder.expectedDate;
-
-        order.cancellationDate = this.actualOrder.cancellationDate;
-        order.cancellationReason = this.actualOrder.cancellationReason;
-
-        console.log(order);
+        this.fbStore.add('orders', order, order.id);
+        this.router.navigateByUrl('list-all');
       }
       // this.router.navigateByUrl('/home');
       return;
