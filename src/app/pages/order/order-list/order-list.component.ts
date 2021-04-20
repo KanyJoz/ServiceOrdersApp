@@ -33,6 +33,16 @@ export class OrderListComponent implements OnInit {
   }
 
   filteredSearch(): void {
-    console.log(this.location.path());
+    if (this.searchControl.value !== '' && this.searchControl.value) {
+      if (this.location.path() === '/list-all'){
+        this.list = this.fbStore.getFilteredAll('orders', this.searchControl.value);
+      } else if (this.location.path() === '/list-completed') {
+        this.list = this.fbStore.getFilteredCompleted('orders', this.searchControl.value);
+      } else if (this.location.path() === '/list-cancelled'){
+        this.list = this.fbStore.getFilteredCancelled('orders', this.searchControl.value);
+      }
+    } else {
+      this.get();
+    }
   }
 }

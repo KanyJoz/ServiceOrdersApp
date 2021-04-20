@@ -37,6 +37,30 @@ export class FbStoreService {
     }).valueChanges() as Observable<Order[]>;
   }
 
+  getFilteredAll(collectionName: string, filterString: string): Observable<Order[]> {
+    return this.afs.collection(collectionName, ref => {
+      let query: CollectionReference | Query = ref;
+      query = query.where('category', '==', filterString);
+      return query;
+    }).valueChanges() as Observable<Order[]>;
+  }
+
+  getFilteredCompleted(collectionName: string, filterString: string): Observable<Order[]> {
+    return this.afs.collection(collectionName, ref => {
+      let query: CollectionReference | Query = ref;
+      query = query.where('state', '==', 'Cancelled').where('category', '==', filterString);
+      return query;
+    }).valueChanges() as Observable<Order[]>;
+  }
+
+  getFilteredCancelled(collectionName: string, filterString: string): Observable<Order[]> {
+    return this.afs.collection(collectionName, ref => {
+      let query: CollectionReference | Query = ref;
+      query = query.where('state', '==', 'Cancelled').where('category', '==', filterString);
+      return query;
+    }).valueChanges() as Observable<Order[]>;
+  }
+
   getById(collectionName: string, id: string): Observable<any> {
     return this.afs.collection(collectionName).doc(id).valueChanges();
   }
