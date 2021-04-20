@@ -6,11 +6,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { CapitalPipe } from 'src/app/shared/pipes/small-capital/capital-pipe.pipe';
 
 
 @NgModule({
   declarations: [
-    NavComponent
+    NavComponent,
+    CapitalPipe
   ],
   imports: [
     CommonModule,

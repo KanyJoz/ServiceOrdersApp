@@ -2,25 +2,25 @@ import { Action } from './../models/action.model';
 
 export const ACTIONS: Action[] = [
     {
-        text: 'Create Order',
+        text: 'create order',
         icon: 'add',
         value: 'add',
         url: '/add'
     },
     {
-        text: 'List All Orders',
+        text: 'list all orders',
         icon: 'view_list',
         value: 'list-all',
         url: '/list-all'
     },
     {
-        text: 'List Completed Orders',
+        text: 'list completed orders',
         icon: 'done',
         value: 'list-completed',
         url: '/list-completed'
     },
     {
-        text: 'List Cancelled Orders',
+        text: 'list cancelled orders',
         icon: 'close',
         value: 'list-cancelled',
         url: '/list-cancelled'

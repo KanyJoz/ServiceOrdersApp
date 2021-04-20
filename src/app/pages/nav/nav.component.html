@@ -1,19 +1,19 @@
 <mat-toolbar class="nav" color="foreground">
     <mat-toolbar-row class="row">
         <div>
-            <a class="main-btn" mat-button [routerLink]="[ '/home' ]" routerLinkActive="active">Admin Panel</a>
+            <a class="main-btn" mat-button [routerLink]="[ '/home' ]" routerLinkActive="active">{{ 'admin panel' | capitalPipe }}</a>
         </div>
         
         <div class="middle">
             <button class="sub-btn" mat-button *ngFor="let action of actions" [routerLink]="[ action.url ]" routerLinkActive="active">
-            {{action.text}}&nbsp;
+            {{action.text | capitalPipe}}&nbsp;
                 <mat-icon>{{action.icon}}</mat-icon>
             </button>
         </div>
         
         <div>
             <!-- TODO: user name dinamically -->
-            <button class="menu" mat-button [matMenuTriggerFor]="menu">Temp User&nbsp;
+            <button class="menu" mat-button [matMenuTriggerFor]="menu">{{ 'temp user' | capitalPipe}}&nbsp;
                 <mat-icon>arrow_drop_down</mat-icon>
             </button>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -11,7 +11,7 @@ import { Location } from '@angular/common';
   templateUrl: './order-list.component.html',
   styleUrls: ['./order-list.component.scss']
 })
-export class OrderListComponent implements OnInit {
+export class OrderListComponent implements OnInit, OnDestroy {
   list: Observable<Order[]>;
   filteredList: Observable<Order[]>;
   searchControl = new FormControl();
@@ -48,5 +48,9 @@ export class OrderListComponent implements OnInit {
 
   onPutOrder(event: Order): void {
     this.searchControl.setValue(event.category);
+  }
+
+  ngOnDestroy(): void {
+    this.searchControl.setValue('');
   }
 }
