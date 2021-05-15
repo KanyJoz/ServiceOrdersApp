@@ -34,7 +34,6 @@ export class ChangeComponent {
     }
   }
 
-    // TODO: firebase Auth
     changePassword(): void {
       if (this.form.valid) {
         // console.log(this.form.value);
